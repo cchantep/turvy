@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turvy console</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+      .alert{margin-top:1em}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Turvy console</h1>
+
+      <p class="lead">Turvy provides easy way to query VAT information from <a href="http://ec.europa.eu">European Commission WebServices</a>.</p>
+
+      <h2>checkVatNumber</h2>
+
+      <div><strong>REST URL:</strong> <tt>/check/:country/:num</tt></div>
+
+      <p class="text-muted">Check a VAT number registered for a european company.</p>
+
+      <form action="#checkVatNumber" id="checkVatNumber" role="form">
+        <div class="form-group">
+          <label for="checkVatNumber_country"
+                 class="control-label">Country (string)</label>
+          
+          <input type="text" id="checkVatNumber_country" name="country"
+                 class="vat-country form-control"
+                 placeholder="Country code (e.g. FR)" />
+        </div>
+
+        <div class="form-group">
+          <label for="checkVarNumber_number"
+                 class="control-label">Company number (string)</label>
+
+          <input type="text" id="checkVatNumber_number" name="number"
+                 class="vat-number form-control" />
+        </div>
+
+        <div>
+          <button class="btn btn-primary">Call</button>
+          = <span class="label label-info">
+            <tt>$.getJSON("https://turvy-demo.herokuapp.com/check/"+country+"/"+number,function(r){...})</tt>
+          </span>
+        </div>
+
+        <div class="alert">
+          <i class="fa fa-caret-right"></i> <strong>JSON Result:</strong>
+          <span>-</span>
+        </div>
+      </form>
+    </div>
+
+    <script src="//codeorigin.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $('#checkVatNumber').click(function(){
+        var c = $('#checkVatNumber .vat-country').val(),
+        n = $('#checkVatNumber .vat-number').val();
+
+        $.getJSON("./check/"+c+'/'+n, function(r){
+          var a = $("#checkVatNumber .alert").
+            attr("class", "alert alert-success");
+          $('span', a).css({'display':"block"}).text(JSON.stringify(r))
+        });
+      
+        return false
+      });
+    </script>
+  </body>
+</html>

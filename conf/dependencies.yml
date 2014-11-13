@@ -1,0 +1,3 @@
+require:
+    - scala 2.11.3
+    - play 2.3.6
