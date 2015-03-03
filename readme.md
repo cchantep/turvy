@@ -13,15 +13,15 @@ In Maven project:
   <!-- ... -->
   
   <repository>
-    <id>applicius-releases</id>
-    <name>Applicius Releases</name>
-    <url>https://raw.github.com/applicius/mvn-repo/master/releases/</url>
+    <id>tatami-release</id>
+    <name>Tatami Releases</name>
+    <url>https://raw.github.com/cchantep/tatami/master/releases/</url>
   </repository>
 
   <!-- ... -->
 
   <dependency>
-    <groupId>fr.applicius.turvy</groupId>
+    <groupId>turvy</groupId>
     <artifactId>vat-client_2.11</artifactId>
     <version>1.0</version>
   </dependency>
@@ -40,10 +40,10 @@ In SBT project:
 
 ```scala
 resolvers ++= Seq(
-  "Applicius Releases" at "https://raw.github.com/applicius/mvn-repo/master/releases/")
+  "Tatami Releases" at "https://raw.github.com/cchantep/tatami/master/releases/")
 
 libraryDependencies ++= Seq(
-  "fr.applicius.turvy" %% "vat-client" % "1.0",
+  "turvy" %% "vat-client" % "1.0",
   "net.databinder.dispatch" %% "dispatch-core" % "0.11.1"/* If mixing WS with
     displatch implementation */
 ```

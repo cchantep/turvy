@@ -10,7 +10,7 @@ object Builds extends Build {
   lazy val root = Project(id = "turvy", base = file("."),
     settings = scalaxbSettings).settings(
     scalaVersion := "2.11.3",
-      organization := "fr.applicius.turvy",
+      organization := "turvy",
       name := "vat-client",
       version := "1.0",
       getWsdl := {
